@@ -8,4 +8,5 @@ $ ->
           url: 'parent/' + $("#parent_id").val() + '/sort'
           type: 'patch'
           data: { from: evt.oldIndex, to: evt.newIndex }
+          placeholder: "ph1"
     )
