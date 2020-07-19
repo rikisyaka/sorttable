@@ -5,7 +5,7 @@ $ ->
       delay: 200,
       onUpdate: (evt) ->
         $.ajax
-          url: 'parent/' + $("#parent_id").val() + '/sort'
-          type: 'patch'
+          url: '/parents/' + $("#parent_id").val() + '/sort'
+          type: 'post'
           data: { from: evt.oldIndex, to: evt.newIndex }
     )

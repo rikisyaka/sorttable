@@ -20,16 +20,15 @@ class ParentsController < ApplicationController
     end
   end
 
+  def sort
+    @parent = Parent.find(params[:id])
+    child = Child.find_by(position: params[:from].to_i + 1)
+    child.insert_at(params[:to].to_i + 1)
+  end
+
   private
     def parent_params
       params.require(:parent).permit(:name)
     end
-  
-  def sort
-    @parent = Parent.find(params[:id])
-    child = @parent.children[params[:from].to_i]
-    child.insert_at(params[:to].to_i + 1)
-    head :ok
-  end
   
 end
