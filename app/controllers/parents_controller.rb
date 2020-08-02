@@ -1,5 +1,10 @@
 class ParentsController < ApplicationController
   def index
+    @parent = Parent.all
+   
+    @parent.each do |parent|
+     @children = Child.where(parent_id: parent.id)
+    end
   end
   
   def new

@@ -3,10 +3,13 @@ $ ->
   if el != null
     sortable = Sortable.create(el,
       delay: 200,
+      placeholder: "ph1",
       onUpdate: (evt) ->
         $.ajax
-          url: 'parent/' + $("#parent_id").val() + '/sort'
+          url: 'parents/index/sort' 
           type: 'patch'
           data: { from: evt.oldIndex, to: evt.newIndex }
-          placeholder: "ph1"
+         
+          
+          
     )
