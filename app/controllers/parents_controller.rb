@@ -1,5 +1,10 @@
 class ParentsController < ApplicationController
   def index
+    @todo = Parent.find(1)
+    @todo_children = @todo.children
+
+    @doing = Parent.find(2)
+    @doing_children = @doing.children
   end
   
   def new
@@ -22,7 +27,7 @@ class ParentsController < ApplicationController
 
   def sort
     @parent = Parent.find(params[:id])
-    child = Child.find_by(position: params[:from].to_i + 1)
+    child = Child.find_by(position: params[:from].to_i + 1, parent_id: @parent.id)
     child.insert_at(params[:to].to_i + 1)
   end
 

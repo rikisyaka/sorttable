@@ -1,45 +1,15 @@
-<p>とりま</p>
-<p>show</p>
-<body>
-    <style>
-        table{width:100%;border:1px solid #000000;border-collapse: collapse;background-color:lavender;}
-        td{border:1px solid #000000;}
-        .ph1{border: dotted 2px blue;}
-        </style>
-        
-        <table>
-            <tbody id="t1">
-            <tr><td>テーブル1</td></tr>
-            <tr><td>テーブル2</td></tr>
-            <tr><td>テーブル3</td></tr>
-            <tr><td>テーブル4</td></tr>
-            </tbody>
-        </table>
-        <ul id="t2">
-            <li>リスト1</li>
-            <li>リスト2</li>
-            <li>リスト3</li>
-            <li>リスト4</li>
-        </ul>
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-        <script>
-        $(function() {
-            // テーブルの行の並び替え
-            $('#t1').sortable({
-                opacity: 0.5,
-                placeholder: "ph1",
-            });
-            // リストの行の並び替え
-            $('#t2').sortable({
-                cursor: "move",
-                opacity: 0.7,
-                placeholder: "ph1",
-            });
-        });
-        </script>
-    
-</body>
+<h2>Todo</h2>
+<ul id="todo">
+  <% @todo_children.each do |child| %>
+    <li><%= child.name %></li>
+  <% end %>
+</ul>
+<%= hidden_field_tag :parent_id, @todo.id %>
 
-<%= link_to new_parent_path %>
+<h2>Doing</h2>
+<ul id="doing">
+  <% @doing_children.each do |child| %>
+    <li><%= child.name %></li>
+  <% end %>
+</ul>
+<%= hidden_field_tag :parent_id2, @doing.id %>
